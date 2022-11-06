@@ -20,4 +20,6 @@ public class ReceivedNutrition {
     @ManyToOne
     @JoinColumn(name = "nutrition_schedule_id")
     private NutritionSchedule nutritionSchedule;
+
+
 }

@@ -6,6 +6,8 @@ import com.fitnessteam.fitnesstracker.services.FitnessMoveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class FitnessMoveServiceImpl implements FitnessMoveService {
     FitnessMoveRepository fitnessMoveRepository;
@@ -24,5 +26,10 @@ public class FitnessMoveServiceImpl implements FitnessMoveService {
     public void deleteFitnessMove(Long id) {
         FitnessMove fitnessMove=fitnessMoveRepository.getById(id);
         fitnessMoveRepository.delete(fitnessMove);
+    }
+
+    @Override
+    public List<FitnessMove> getAll() {
+        return fitnessMoveRepository.findAll();
     }
 }

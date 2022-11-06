@@ -6,6 +6,8 @@ import com.fitnessteam.fitnesstracker.services.NutritionScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class NutritionScheduleServiceImpl implements NutritionScheduleService {
     NutritionScheduleRepository nutritionScheduleRepository;
@@ -23,5 +25,10 @@ public class NutritionScheduleServiceImpl implements NutritionScheduleService {
     @Override
     public void deleteNutritionSchedule(Long id) {
         nutritionScheduleRepository.deleteById(id);
+    }
+
+    @Override
+    public List<NutritionSchedule> getAll() {
+        return nutritionScheduleRepository.findAll();
     }
 }

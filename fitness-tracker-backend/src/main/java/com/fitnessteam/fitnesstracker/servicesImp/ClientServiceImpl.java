@@ -6,6 +6,8 @@ import com.fitnessteam.fitnesstracker.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClientServiceImpl implements ClientService {
     ClientRepository clientRepository;
@@ -24,5 +26,10 @@ public class ClientServiceImpl implements ClientService {
     public void deleteClient(Long id) {
         Client client=clientRepository.getById(id);
         clientRepository.delete(client);
+    }
+
+    @Override
+    public List<Client> getAll() {
+        return clientRepository.findAll();
     }
 }

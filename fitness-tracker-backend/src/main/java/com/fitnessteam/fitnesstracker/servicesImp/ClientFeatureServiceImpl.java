@@ -6,6 +6,8 @@ import com.fitnessteam.fitnesstracker.services.ClientFeatureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ClientFeatureServiceImpl implements ClientFeatureService {
 
@@ -25,5 +27,10 @@ public class ClientFeatureServiceImpl implements ClientFeatureService {
     public void deleteClientFeature(Long id) {
         ClientFeature clientFeature=clientFeatureRepository.getById(id);
         clientFeatureRepository.delete(clientFeature);
+    }
+
+    @Override
+    public List<ClientFeature> getAll() {
+        return clientFeatureRepository.findAll();
     }
 }

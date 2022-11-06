@@ -12,11 +12,14 @@ public class Move {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private int set;
-    private  int repetition;
+    private int setNumber;
+    private int repetitionNumber;
     private String note;
+
 
     @ManyToOne
     @JoinColumn(name = "training_program_id")
     private TrainingProgram trainingProgram;
+
+
 }

@@ -11,7 +11,13 @@ import java.util.List;
 public class TrainingProgram {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+
     @OneToMany
     private List<Move> firstDay;
     @OneToMany
@@ -22,6 +28,8 @@ public class TrainingProgram {
     private List<Move> fourthDay;
     @OneToMany
     private List<Move> fifthDay;
+
+
 
 
 }

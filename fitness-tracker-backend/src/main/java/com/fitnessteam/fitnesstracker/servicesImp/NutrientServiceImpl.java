@@ -6,6 +6,8 @@ import com.fitnessteam.fitnesstracker.services.NutrientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class NutrientServiceImpl implements NutrientService {
 
@@ -24,5 +26,10 @@ public class NutrientServiceImpl implements NutrientService {
     @Override
     public void deleteNutrient(Long id) {
         nutrientRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Nutrient> getAll() {
+        return nutrientRepository.findAll();
     }
 }
