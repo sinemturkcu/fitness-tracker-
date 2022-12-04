@@ -21,7 +21,7 @@ public class ClientFeature {
     private boolean isSmoke;
     private String sportDescription;
     private double basalMetabolism;
-   private  Enum target;
+    private  Enum target;
 
    @OneToOne(cascade = CascadeType.ALL)
    @JoinColumn(name = "client_id")//, referencedColumnName = "Id"
