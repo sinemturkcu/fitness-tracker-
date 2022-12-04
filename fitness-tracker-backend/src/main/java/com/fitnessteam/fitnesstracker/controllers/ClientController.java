@@ -1,6 +1,7 @@
 package com.fitnessteam.fitnesstracker.controllers;
 
 
+import com.fitnessteam.fitnesstracker.dtos.ClientDto;
 import com.fitnessteam.fitnesstracker.entities.Client;
 import com.fitnessteam.fitnesstracker.repositories.ClientRepository;
 import com.fitnessteam.fitnesstracker.services.ClientService;
@@ -33,6 +34,11 @@ public class ClientController {
     @DeleteMapping
     public void delete(@RequestParam Long id){
          clientService.deleteClient(id);
+    }
+
+    @GetMapping("/listAll")
+    public List<ClientDto> getAllDto(){
+        return  this.clientService.getClientAll();
     }
 
 
