@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/receivedNutrition")
-@CrossOrigin
+@CrossOrigin(origins="*")
 public class ReceivedNutritionController {
     ReceivedNutritionService receivedNutritionService;
 

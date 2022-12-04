@@ -21,7 +21,7 @@ public class Tracker {
     private String fullName;
     private String emailAddress;
     private String phoneNumber;
-    private String password;
+    // private String password;
     private Date createdOn;
     private boolean gender;
     private boolean isActive;

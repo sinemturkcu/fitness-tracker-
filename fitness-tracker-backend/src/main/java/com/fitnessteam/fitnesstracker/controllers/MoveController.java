@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/move")
-@CrossOrigin
+@CrossOrigin(origins="*")
 public class MoveController {
 
     MoveService moveService;

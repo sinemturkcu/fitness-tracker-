@@ -17,7 +17,6 @@ public class TrainingProgram {
     @JoinColumn(name = "client_id")
     private Client client;
 
-
     @OneToMany
     private List<Move> firstDay;
     @OneToMany

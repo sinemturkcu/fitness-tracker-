@@ -17,7 +17,7 @@ public class NutritionSchedule {
     @JoinColumn(name = "client_id")
     private Client client;
 
-     @OneToMany
+    @OneToMany
     private List<ReceivedNutrition> firstMeal;
     @OneToMany
     private List<ReceivedNutrition> secondMeal;

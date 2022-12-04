@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins="*")
 @RequestMapping("/api/fitnessMove")
 public class FitnessMoveController {
     FitnessMoveService fitnessMoveService;
