@@ -17,6 +17,7 @@ public class Tracker {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int experienceYear;
+    private String image;
     private String description;
     private String fullName;
     private String emailAddress;

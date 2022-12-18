@@ -34,7 +34,7 @@ public class FitnessMoveController {
     }
 
     @GetMapping("/filter")
-    public List<FitnessMove> getFilterAll(String target){
+    public List<FitnessMove> getFilterAll(@RequestParam String target){
         return fitnessMoveService.filterByTarget(target);
     }
 
