@@ -59,7 +59,7 @@ public class ClientFeatureServiceImpl implements ClientFeatureService {
     }
 
     public double calculateBodyMassIndex (double weight, double height){
-        double BMI = weight / (height * height);
+        double BMI = weight / ((height * height)/10000);
         return BMI;
     }
 
