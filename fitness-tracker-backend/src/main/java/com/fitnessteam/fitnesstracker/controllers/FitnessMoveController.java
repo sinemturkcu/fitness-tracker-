@@ -1,6 +1,5 @@
 package com.fitnessteam.fitnesstracker.controllers;
 
-import com.fitnessteam.fitnesstracker.entities.ClientFeature;
 import com.fitnessteam.fitnesstracker.entities.FitnessMove;
 import com.fitnessteam.fitnesstracker.services.FitnessMoveService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +31,11 @@ public class FitnessMoveController {
     @DeleteMapping
     public void delete(@RequestParam Long id){
         fitnessMoveService.deleteFitnessMove(id);
+    }
+
+    @GetMapping("/filter")
+    public List<FitnessMove> getFilterAll(String target){
+        return fitnessMoveService.filterByTarget(target);
     }
 
 }

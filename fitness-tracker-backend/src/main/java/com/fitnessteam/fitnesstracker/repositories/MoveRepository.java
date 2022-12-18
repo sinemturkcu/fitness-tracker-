@@ -11,4 +11,5 @@ import java.util.List;
 @Qualifier("move")
 public interface MoveRepository extends JpaRepository<Move,Long> {
     List<Move> findAllById(Long id);
+
 }

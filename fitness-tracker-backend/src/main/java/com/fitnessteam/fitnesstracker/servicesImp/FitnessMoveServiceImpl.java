@@ -32,4 +32,9 @@ public class FitnessMoveServiceImpl implements FitnessMoveService {
     public List<FitnessMove> getAll() {
         return fitnessMoveRepository.findAll();
     }
+
+    @Override
+    public List<FitnessMove> filterByTarget(String target) {
+        return fitnessMoveRepository.filterByTarget(target);
+    }
 }

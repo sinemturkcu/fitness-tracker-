@@ -10,4 +10,5 @@ public interface FitnessMoveService {
     FitnessMove saveFitnessMove(FitnessMove fitnessMove);
     void deleteFitnessMove(Long id);
     List<FitnessMove> getAll();
+    List<FitnessMove> filterByTarget(String target);
 }
