@@ -25,7 +25,7 @@ public class Tracker {
     private Date createdOn;
     private boolean gender;
     private boolean isActive;
-
+    private int starRate;
     @OneToMany
     private List<Client> students;
 

@@ -1,6 +1,8 @@
 package com.fitnessteam.fitnesstracker.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,7 +11,8 @@ import java.util.List;
 @Data
 @Table(name = "client")
 @Entity
-
+@NoArgsConstructor
+@AllArgsConstructor
 public class Client {
 
     @Id
