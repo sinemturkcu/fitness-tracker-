@@ -27,6 +27,7 @@ public class RefreshTokenService {
         if(token == null) {
             token =	new RefreshToken();
             token.setUser(user);
+            token.setRoles(user.getRoles());
         }
         token.setToken(UUID.randomUUID().toString());
         token.setExpiryDate(Date.from(Instant.now().plusSeconds(expireSeconds)));

@@ -28,4 +28,9 @@ public class RefreshToken {
     @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     Date expiryDate;
+
+    @Enumerated(EnumType.STRING)
+    private  Roles roles;
+
+
 }
