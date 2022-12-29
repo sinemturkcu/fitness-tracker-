@@ -29,6 +29,10 @@ public class Client {
     @OneToOne(mappedBy = "client")
     private ClientFeature clientFeature;
 
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "user_id",referencedColumnName = "id")//, referencedColumnName = "Id"
+    private User user;
+
     @ManyToOne
     @JoinColumn(name = "tracker_id")
     private Tracker tracker;

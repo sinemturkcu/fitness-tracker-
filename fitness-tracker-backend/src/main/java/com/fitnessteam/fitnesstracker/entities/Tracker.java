@@ -30,6 +30,9 @@ public class Tracker {
     @OneToMany
     private List<Client> students;
 
+    @OneToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "user_id",referencedColumnName = "id")//, referencedColumnName = "Id"
+    private User user;
 
 
 }

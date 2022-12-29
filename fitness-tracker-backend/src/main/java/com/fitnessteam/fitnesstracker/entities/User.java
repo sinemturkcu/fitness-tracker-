@@ -17,4 +17,11 @@ public class User {
     @Enumerated(EnumType.STRING)
     private  Roles roles;
 
+    @OneToOne(mappedBy = "user")
+    private Client client;
+
+    @OneToOne(mappedBy = "user")
+    private Tracker tracker;
+
+
 }

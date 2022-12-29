@@ -8,6 +8,7 @@ import lombok.Setter;
 public class TrackerDto {
     private Long id;
     private int experienceYear;
+    private String image;
     private String description;
     private String fullName;
     private String emailAddress;
@@ -15,10 +16,11 @@ public class TrackerDto {
     private boolean gender;
     private String sGender;
 
-    public TrackerDto(Long id, int experienceYear, String description, String fullName, String emailAddress,
+    public TrackerDto(Long id, int experienceYear,String image, String description, String fullName, String emailAddress,
                       String phoneNumber, boolean gender){
         this.id = id;
         this.experienceYear = experienceYear;
+        this.image=image;
         this.description = description;
         this.fullName = fullName;
         this.emailAddress = emailAddress;

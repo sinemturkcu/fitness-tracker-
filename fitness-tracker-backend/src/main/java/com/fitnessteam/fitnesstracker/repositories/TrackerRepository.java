@@ -14,7 +14,7 @@ import java.util.List;
 public interface TrackerRepository extends JpaRepository<Tracker,Long> {
     List<Tracker> findAllById(Long id);
 
-    @Query(value = "SELECT NEW com.fitnessteam.fitnesstracker.dtos.TrackerDto" + "(t.id,t.experienceYear, t.description, t.fullName, t.emailAddress, " +
+    @Query(value = "SELECT NEW com.fitnessteam.fitnesstracker.dtos.TrackerDto" + "(t.id,t.experienceYear,t.image, t.description, t.fullName, t.emailAddress, " +
             "t.phoneNumber, t.gender)" +
             "FROM Tracker t")
     List<TrackerDto> listAllTrackers();
