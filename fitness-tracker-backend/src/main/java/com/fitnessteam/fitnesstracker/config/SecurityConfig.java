@@ -61,8 +61,8 @@ public class SecurityConfig {
         corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:8082"));
         corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
         corsConfiguration.setAllowedHeaders(Arrays.asList("Origin", "Access-Control-Allow-Origin", "Content-Type",
-                        "Accept", "Authorization", "Origin, Accept", "X-Requested-With",
-                        "Access-Control-Request-Method", "Access-Control-Request-Headers"));
+                "Accept", "Authorization", "Origin, Accept", "X-Requested-With",
+                "Access-Control-Request-Method", "Access-Control-Request-Headers"));
         corsConfiguration.setExposedHeaders(Arrays.asList("Origin", "Content-Type", "Accept", "Authorization",
                 "Access-Control-Allow-Origin", "Access-Control-Allow-Origin", "Access-Control-Allow-Credentials"));
         corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
@@ -82,11 +82,11 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET,"/api/**")
                 .permitAll()
+                .antMatchers(HttpMethod.POST,"/api/**")
+                .permitAll()
                 .antMatchers("/auth/**")
                 .permitAll()
                 .anyRequest().authenticated();
-
-
 
         httpSecurity.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();

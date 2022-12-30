@@ -2,8 +2,8 @@ package com.fitnessteam.fitnesstracker.controllers;
 
 
 import com.fitnessteam.fitnesstracker.dtos.ClientDto;
+import com.fitnessteam.fitnesstracker.dtos.ClientFilterDto;
 import com.fitnessteam.fitnesstracker.entities.Client;
-import com.fitnessteam.fitnesstracker.repositories.ClientRepository;
 import com.fitnessteam.fitnesstracker.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -41,6 +41,10 @@ public class ClientController {
         return  this.clientService.getClientAll();
     }
 
+    @GetMapping("/filter")
+    public List<ClientFilterDto> getFilterAll(@RequestParam Long trackerId){
+        return clientService.filterByTrackerId(trackerId);
+    }
 
 
 

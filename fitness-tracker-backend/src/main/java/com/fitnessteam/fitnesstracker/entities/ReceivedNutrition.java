@@ -17,9 +17,12 @@ public class ReceivedNutrition {
     private  double receivedFat;
     private String note;
 
-    @ManyToOne
+    /*
+        @ManyToOne
     @JoinColumn(name = "nutrition_schedule_id")
     private NutritionSchedule nutritionSchedule;
+     */
+
 
 
 }

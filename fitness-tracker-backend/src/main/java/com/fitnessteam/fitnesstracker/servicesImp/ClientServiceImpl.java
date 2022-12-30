@@ -1,6 +1,7 @@
 package com.fitnessteam.fitnesstracker.servicesImp;
 
 import com.fitnessteam.fitnesstracker.dtos.ClientDto;
+import com.fitnessteam.fitnesstracker.dtos.ClientFilterDto;
 import com.fitnessteam.fitnesstracker.entities.Client;
 import com.fitnessteam.fitnesstracker.repositories.ClientRepository;
 import com.fitnessteam.fitnesstracker.services.ClientService;
@@ -18,11 +19,39 @@ public class ClientServiceImpl implements ClientService {
         this.clientRepository = clientRepository;
     }
 
+
     @Override
     public Client saveClient(Client client) {
+        double BMR;
+        double BMI;
+        if (client.isGender()){
+            BMR = calculateBasalMetabolismForMan(client.getAge(),
+                    client.getWeight(), client.getHeight());
+        }
+        else {
+            BMR = calculateBasalMetabolismForWomen(client.getAge(),
+                    client.getWeight(), client.getHeight());
+        }
+        client.setBasalMetabolism(BMR);
+        BMI = calculateBodyMassIndex(client.getWeight(), client.getHeight());
+        client.setBodyMassIndex(BMI);
+
         return clientRepository.save(client);
     }
+    public double calculateBasalMetabolismForMan(int age, double weight, double height){
+        double BMR = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+        return BMR;
+    }
 
+    public double calculateBasalMetabolismForWomen(int age, double weight, double height){
+        double BMR = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+        return BMR;
+    }
+
+    public double calculateBodyMassIndex (double weight, double height){
+        double BMI = weight / ((height * height)/10000);
+        return BMI;
+    }
     @Override
     public void deleteClient(Long id) {
         Client client=clientRepository.getById(id);
@@ -46,5 +75,10 @@ public class ClientServiceImpl implements ClientService {
             }
         }
         return response;
+    }
+
+    @Override
+    public List<ClientFilterDto> filterByTrackerId(Long trackerId) {
+        return clientRepository.filterByTrackerId(trackerId);
     }
 }

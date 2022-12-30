@@ -1,7 +1,6 @@
 package com.fitnessteam.fitnesstracker.controllers;
 
 import com.fitnessteam.fitnesstracker.entities.RefreshToken;
-import com.fitnessteam.fitnesstracker.entities.Roles;
 import com.fitnessteam.fitnesstracker.entities.User;
 import com.fitnessteam.fitnesstracker.request.RefreshRequest;
 import com.fitnessteam.fitnesstracker.request.UserRequest;
@@ -16,11 +15,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins="*")
 public class AuthController {
 
     private AuthenticationManager authenticationManager;
@@ -53,7 +54,6 @@ public class AuthController {
         authResponse.setAccessToken("Bearer " + jwtToken);
         authResponse.setRefreshToken(refreshTokenService.createRefreshToken(user));
         authResponse.setUserId(user.getId());
-        authResponse.setUserRole(user.getRoles().toString());
         return authResponse;
     }
 
@@ -68,7 +68,6 @@ public class AuthController {
         User user = new User();
         user.setUserName(registerRequest.getUserName());
         user.setPassword(passwordEncoder.encode(registerRequest.getPassword()));
-        user.setRoles(Roles.ROLE_USER);
         userService.saveOneUser(user);
 
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(registerRequest.getUserName(), registerRequest.getPassword());
@@ -80,7 +79,6 @@ public class AuthController {
         authResponse.setAccessToken("Bearer " + jwtToken);
         authResponse.setRefreshToken(refreshTokenService.createRefreshToken(user));
         authResponse.setUserId(user.getId());
-        authResponse.setUserRole(Roles.ROLE_USER.toString());
         return new ResponseEntity<>(authResponse, HttpStatus.CREATED);
     }
 
@@ -96,7 +94,6 @@ public class AuthController {
             response.setMessage("token successfully refreshed.");
             response.setAccessToken("Bearer " + jwtToken);
             response.setUserId(user.getId());
-            response.setUserRole(user.getRoles().toString());
             return new ResponseEntity<>(response, HttpStatus.OK);
         } else {
             response.setMessage("refresh token is not valid.");

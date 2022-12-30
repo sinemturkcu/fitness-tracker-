@@ -13,20 +13,17 @@ public class NutritionSchedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+
+/*
+  @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
 
-    @OneToMany
-    private List<ReceivedNutrition> firstMeal;
-    @OneToMany
-    private List<ReceivedNutrition> secondMeal;
-    @OneToMany
-    private List<ReceivedNutrition> thirdMeal;
-    @OneToMany
-    private List<ReceivedNutrition> fourthMeal;
-    @OneToMany
-    private List<ReceivedNutrition> fifthMeal;
+ @OneToMany
+    private List<ReceivedNutrition> nutritionProgram;
+ */
+
+
 
 
 

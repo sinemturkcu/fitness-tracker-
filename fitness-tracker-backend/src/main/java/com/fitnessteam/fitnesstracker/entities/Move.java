@@ -11,7 +11,6 @@ public class Move {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
     private int setNumber;
     private int repetitionNumber;
     private String note;

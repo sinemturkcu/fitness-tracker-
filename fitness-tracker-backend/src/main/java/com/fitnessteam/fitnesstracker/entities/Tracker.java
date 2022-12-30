@@ -1,5 +1,7 @@
 package com.fitnessteam.fitnesstracker.entities;
 
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -27,6 +29,8 @@ public class Tracker {
     private boolean gender;
     private boolean isActive;
     private int starRate;
+
+    @JsonManagedReference
     @OneToMany
     private List<Client> students;
 
