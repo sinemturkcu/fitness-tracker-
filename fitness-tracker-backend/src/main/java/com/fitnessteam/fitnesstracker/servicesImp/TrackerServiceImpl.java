@@ -2,6 +2,7 @@ package com.fitnessteam.fitnesstracker.servicesImp;
 
 import com.fitnessteam.fitnesstracker.dtos.ClientDto;
 import com.fitnessteam.fitnesstracker.dtos.TrackerDto;
+import com.fitnessteam.fitnesstracker.dtos.TrackerFilterDto;
 import com.fitnessteam.fitnesstracker.entities.Tracker;
 import com.fitnessteam.fitnesstracker.repositories.TrackerRepository;
 import com.fitnessteam.fitnesstracker.services.TrackerService;
@@ -29,6 +30,11 @@ public class TrackerServiceImpl implements TrackerService {
     public void deleteTracker(Long id) {
         Tracker tracker=trackerRepository.getById(id);
         trackerRepository.delete(tracker);
+    }
+
+    @Override
+    public TrackerFilterDto filterByUserId(Long userId) {
+        return trackerRepository.filterByUserId(userId);
     }
 
     @Override

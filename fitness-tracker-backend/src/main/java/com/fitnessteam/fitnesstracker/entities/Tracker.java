@@ -32,6 +32,7 @@ public class Tracker {
 
     @JsonManagedReference
     @OneToMany
+    @JoinColumn(name = "client_id")
     private List<Client> students;
 
     @OneToOne(cascade = CascadeType.MERGE)

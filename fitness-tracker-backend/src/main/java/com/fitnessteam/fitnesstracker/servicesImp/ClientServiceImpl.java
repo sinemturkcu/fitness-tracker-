@@ -2,8 +2,11 @@ package com.fitnessteam.fitnesstracker.servicesImp;
 
 import com.fitnessteam.fitnesstracker.dtos.ClientDto;
 import com.fitnessteam.fitnesstracker.dtos.ClientFilterDto;
+import com.fitnessteam.fitnesstracker.dtos.TrackerFilterDto;
 import com.fitnessteam.fitnesstracker.entities.Client;
+import com.fitnessteam.fitnesstracker.entities.Tracker;
 import com.fitnessteam.fitnesstracker.repositories.ClientRepository;
+import com.fitnessteam.fitnesstracker.repositories.TrackerRepository;
 import com.fitnessteam.fitnesstracker.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,10 +16,12 @@ import java.util.List;
 @Service
 public class ClientServiceImpl implements ClientService {
     ClientRepository clientRepository;
+    TrackerRepository trackerRepository;
 
     @Autowired
-    public ClientServiceImpl(ClientRepository clientRepository) {
+    public ClientServiceImpl(ClientRepository clientRepository, TrackerRepository trackerRepository) {
         this.clientRepository = clientRepository;
+        this.trackerRepository = trackerRepository;
     }
 
 
@@ -79,6 +84,8 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public List<ClientFilterDto> filterByTrackerId(Long trackerId) {
-        return clientRepository.filterByTrackerId(trackerId);
+        TrackerFilterDto trackerFilterDto=trackerRepository.filterByUserId(trackerId);
+        return clientRepository.filterByTrackerId(trackerFilterDto.getTrackerId());
     }
+
 }

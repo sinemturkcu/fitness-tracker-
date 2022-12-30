@@ -1,5 +1,7 @@
 package com.fitnessteam.fitnesstracker.controllers;
+import com.fitnessteam.fitnesstracker.dtos.ClientFilterDto;
 import com.fitnessteam.fitnesstracker.dtos.TrackerDto;
+import com.fitnessteam.fitnesstracker.dtos.TrackerFilterDto;
 import com.fitnessteam.fitnesstracker.entities.Tracker;
 import com.fitnessteam.fitnesstracker.services.TrackerService;
 import org.springframework.beans.factory.annotation.Autowired;
