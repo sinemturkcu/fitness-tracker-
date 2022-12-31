@@ -16,7 +16,6 @@ import java.util.List;
 public interface TrackerRepository extends JpaRepository<Tracker,Long> {
 
 
-
     @Query(value = "SELECT t FROM Tracker t " +
             " where (:userId IS NULL OR t.user.id =: userId) ")
     Tracker changeActivity(Long userId);
