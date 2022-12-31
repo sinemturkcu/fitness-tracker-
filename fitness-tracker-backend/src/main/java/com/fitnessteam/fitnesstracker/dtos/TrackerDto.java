@@ -15,9 +15,10 @@ public class TrackerDto {
     private String phoneNumber;
     private boolean gender;
     private String sGender;
+    private boolean isActive;
 
     public TrackerDto(Long id, int experienceYear,String image, String description, String fullName, String emailAddress,
-                      String phoneNumber, boolean gender){
+                      String phoneNumber, boolean gender,boolean isActive){
         this.id = id;
         this.experienceYear = experienceYear;
         this.image=image;
@@ -26,6 +27,7 @@ public class TrackerDto {
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
         this.gender = gender;
+        this.isActive=isActive;
 
     }
 }

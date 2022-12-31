@@ -1,5 +1,6 @@
 package com.fitnessteam.fitnesstracker.services;
 
+import com.fitnessteam.fitnesstracker.dtos.TrackerActiveDto;
 import com.fitnessteam.fitnesstracker.dtos.TrackerDto;
 import com.fitnessteam.fitnesstracker.dtos.TrackerFilterDto;
 import com.fitnessteam.fitnesstracker.entities.Tracker;
@@ -13,5 +14,7 @@ public interface TrackerService {
     void deleteTracker(Long id);
     TrackerFilterDto filterByUserId(Long userId);
     List<TrackerDto> getAllTrackers();
+    List<TrackerActiveDto> findAllActiveTracker();
+    Tracker changeActivity(Long userId);
 
 }

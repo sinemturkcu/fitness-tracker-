@@ -1,6 +1,8 @@
 package com.fitnessteam.fitnesstracker.servicesImp;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fitnessteam.fitnesstracker.dtos.ClientDto;
+import com.fitnessteam.fitnesstracker.dtos.TrackerActiveDto;
 import com.fitnessteam.fitnesstracker.dtos.TrackerDto;
 import com.fitnessteam.fitnesstracker.dtos.TrackerFilterDto;
 import com.fitnessteam.fitnesstracker.entities.Tracker;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TrackerServiceImpl implements TrackerService {
@@ -50,5 +53,26 @@ public class TrackerServiceImpl implements TrackerService {
         }
         return response;
     }
+
+    @Override
+    public List<TrackerActiveDto> findAllActiveTracker() {
+        return trackerRepository.findAllActiveTracker();
+    }
+
+    @Override
+    @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
+    public Tracker changeActivity(Long userId) {
+        TrackerFilterDto trackerFilterDto=trackerRepository.filterByUserId(userId);
+        Tracker tracker= trackerRepository.getById(trackerFilterDto.getTrackerId());
+        if(tracker.isActive()){
+            tracker.setActive(false);
+        }
+        else{
+            tracker.setActive(true);
+        }
+        return trackerRepository.save(tracker);
+
+    }
+
 
 }
