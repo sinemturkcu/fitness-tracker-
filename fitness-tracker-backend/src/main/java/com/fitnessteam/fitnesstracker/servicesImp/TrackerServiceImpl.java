@@ -60,9 +60,8 @@ public class TrackerServiceImpl implements TrackerService {
     }
 
     @Override
-    @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
     public Tracker changeActivity(Long userId) {
-        TrackerFilterDto trackerFilterDto=trackerRepository.filterByUserId(userId);
+        TrackerFilterDto trackerFilterDto = trackerRepository.filterByUserId(userId);
         Tracker tracker= trackerRepository.getById(trackerFilterDto.getTrackerId());
         if(tracker.isActive()){
             tracker.setActive(false);

@@ -35,9 +35,5 @@ public class TrackerController {
         return  this.trackerService.findAllActiveTracker();
     }
 
-    @JsonFormat(with = JsonFormat.Feature.ACCEPT_SINGLE_VALUE_AS_ARRAY)
-    @PostMapping("/change")
-    public Tracker changeActivity(@RequestBody ListRequest listRequest){
-        return trackerService.changeActivity(listRequest.getUserId());
-    }
+
 }
