@@ -35,8 +35,8 @@ public class TrackerController {
         return  this.trackerService.findAllActiveTracker();
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/{userId}")
-    public Tracker updateActivity(@Validated @PathVariable Long userId){
+    @RequestMapping(method = RequestMethod.PUT)
+    public Tracker updateActivity(@RequestParam Long userId){
         return trackerService.changeActivity(userId);
     }
 

@@ -62,14 +62,14 @@ public class TrackerServiceImpl implements TrackerService {
     @Override
     public Tracker changeActivity(Long userId) {
         TrackerFilterDto trackerFilterDto = trackerRepository.filterByUserId(userId);
-        Tracker tracker= trackerRepository.getById(trackerFilterDto.getTrackerId());
-        if(tracker.isActive()){
-            tracker.setActive(false);
+        Optional<Tracker> tracker= trackerRepository.findById(trackerFilterDto.getTrackerId());
+        if(tracker.get().isActive()){
+            tracker.get().setActive(false);
         }
         else{
-            tracker.setActive(true);
+            tracker.get().setActive(true);
         }
-        return trackerRepository.save(tracker);
+        return trackerRepository.save(tracker.get());
 
     }
 
