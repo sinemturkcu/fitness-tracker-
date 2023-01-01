@@ -10,6 +10,7 @@ import com.fitnessteam.fitnesstracker.services.TrainingProgramService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,11 +18,14 @@ import java.util.List;
 public class TrainingProgramServiceImpl implements TrainingProgramService {
     TrainingProgramRepository trainingProgramRepository;
     ClientService clientService;
+    ExcelExportService excelExportService;
 
     @Autowired
-    public TrainingProgramServiceImpl(TrainingProgramRepository trainingProgramRepository, ClientService clientService) {
+    public TrainingProgramServiceImpl(TrainingProgramRepository trainingProgramRepository, ClientService clientService,
+                                      ExcelExportService excelExportService) {
         this.trainingProgramRepository = trainingProgramRepository;
         this.clientService = clientService;
+        this.excelExportService = excelExportService;
     }
 
     @Override
@@ -43,5 +47,13 @@ public class TrainingProgramServiceImpl implements TrainingProgramService {
     public List<TrainingProgramDto> filterByUserId(Long userId) {
         ClientFilterDto clientFilterDto = clientService.filterByUserId(userId);
         return trainingProgramRepository.filterByClientId(clientFilterDto.getClientId());
+    }
+
+    @Override
+    public ByteArrayInputStream exportTrainingProgram(Long userId) {
+        ClientFilterDto clientFilterDto = clientService.filterByUserId(userId);
+        List<TrainingProgramDto> trainingProgramDtoList = trainingProgramRepository.filterByClientId(clientFilterDto.getClientId());
+
+        return excelExportService.exportTrainingProgram(trainingProgramDtoList);
     }
 }

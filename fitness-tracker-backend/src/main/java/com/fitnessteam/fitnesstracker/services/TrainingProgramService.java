@@ -4,6 +4,7 @@ import com.fitnessteam.fitnesstracker.dtos.TrainingProgramDto;
 import com.fitnessteam.fitnesstracker.entities.TrainingProgram;
 import org.springframework.stereotype.Component;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 @Component
@@ -12,4 +13,5 @@ public interface TrainingProgramService {
     void deleteTrainingProgram(Long id);
     List<TrainingProgram> getAll();
     List<TrainingProgramDto> filterByUserId(Long userId);
+    ByteArrayInputStream exportTrainingProgram(Long userId);
 }

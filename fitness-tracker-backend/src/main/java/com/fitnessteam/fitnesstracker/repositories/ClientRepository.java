@@ -2,9 +2,11 @@ package com.fitnessteam.fitnesstracker.repositories;
 
 
 import com.fitnessteam.fitnesstracker.dtos.ClientDto;
+import com.fitnessteam.fitnesstracker.dtos.ClientFeatureDto;
 import com.fitnessteam.fitnesstracker.dtos.ClientFilterDto;
 import com.fitnessteam.fitnesstracker.dtos.TrackerFilterDto;
 import com.fitnessteam.fitnesstracker.entities.Client;
+import com.fitnessteam.fitnesstracker.entities.ClientFeature;
 import com.fitnessteam.fitnesstracker.entities.FitnessMove;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -22,13 +24,11 @@ public interface ClientRepository extends JpaRepository<Client,Long> {
             "FROM Client c")
     List<ClientDto> listAllClients();
 
-    @Query(value = "SELECT NEW com.fitnessteam.fitnesstracker.dtos.ClientFeatureDto" +
-            "(c.id, c.fullName, c.age, c.height, c.weight, c.bodyMassIndex, c.neckGirth, c.hipCircumference, c.garth," +
-            "c.isSmoke, c.sportDescription, c.basalMetabolism, c.target)" +
+    @Query(value = "SELECT NEW com.fitnessteam.fitnesstracker.dtos.ClientFilterDto" +
+            "(c.id, c.fullName)" +
             "FROM Client c" +
             " where (:trackerId IS NULL OR c.tracker.id =: trackerId) ")
     List<ClientFilterDto> filterByTrackerId(Long trackerId);
-
 
     @Query(value = "SELECT NEW com.fitnessteam.fitnesstracker.dtos.ClientFilterDto" +
             "(c.id, c.fullName)" +
