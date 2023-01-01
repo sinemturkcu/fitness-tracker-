@@ -45,7 +45,7 @@ public class TrainingProgramController {
         return trainingProgramService.filterByUserId(userId);
     }
 
-    @PostMapping(value = "/export-trainingProgram")
+    @PostMapping(value = "/export")
     public ResponseEntity<Resource> exportTrainingProgram(@RequestParam Long userId) {
 
         String filename = "ticket-trainingProgram.xlsx";
