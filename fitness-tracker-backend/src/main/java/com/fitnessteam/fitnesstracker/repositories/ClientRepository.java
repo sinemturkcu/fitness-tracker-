@@ -22,8 +22,9 @@ public interface ClientRepository extends JpaRepository<Client,Long> {
             "FROM Client c")
     List<ClientDto> listAllClients();
 
-    @Query(value = "SELECT NEW com.fitnessteam.fitnesstracker.dtos.ClientFilterDto" +
-            "(c.id, c.fullName)" +
+    @Query(value = "SELECT NEW com.fitnessteam.fitnesstracker.dtos.ClientFeatureDto" +
+            "(c.id, c.fullName, c.age, c.height, c.weight, c.bodyMassIndex, c.neckGirth, c.hipCircumference, c.garth," +
+            "c.isSmoke, c.sportDescription, c.basalMetabolism, c.target)" +
             "FROM Client c" +
             " where (:trackerId IS NULL OR c.tracker.id =: trackerId) ")
     List<ClientFilterDto> filterByTrackerId(Long trackerId);
