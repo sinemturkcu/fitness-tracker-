@@ -1,6 +1,7 @@
 package com.fitnessteam.fitnesstracker.servicesImp;
 
 import com.fitnessteam.fitnesstracker.dtos.ClientDto;
+import com.fitnessteam.fitnesstracker.dtos.ClientFeatureDto;
 import com.fitnessteam.fitnesstracker.dtos.ClientFilterDto;
 import com.fitnessteam.fitnesstracker.dtos.TrackerFilterDto;
 import com.fitnessteam.fitnesstracker.entities.Client;
@@ -91,6 +92,13 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public ClientFilterDto filterByUserId(Long userId) {
         return clientRepository.filterByUserId(userId);
+    }
+
+    @Override
+    public List<ClientFeatureDto> filtersByUserId(Long userId) {
+        TrackerFilterDto trackerFilterDto = trackerRepository.filterByUserId(userId);
+
+        return clientRepository.filtersByTrackerId(trackerFilterDto.getTrackerId());
     }
 
 }

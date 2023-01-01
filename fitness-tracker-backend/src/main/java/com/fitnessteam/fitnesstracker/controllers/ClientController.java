@@ -2,6 +2,7 @@ package com.fitnessteam.fitnesstracker.controllers;
 
 
 import com.fitnessteam.fitnesstracker.dtos.ClientDto;
+import com.fitnessteam.fitnesstracker.dtos.ClientFeatureDto;
 import com.fitnessteam.fitnesstracker.dtos.ClientFilterDto;
 import com.fitnessteam.fitnesstracker.entities.Client;
 import com.fitnessteam.fitnesstracker.services.ClientService;
@@ -45,6 +46,12 @@ public class ClientController {
     public List<ClientFilterDto> getFilterAll(@RequestParam Long trackerId){
         return clientService.filterByTrackerId(trackerId);
     }
+
+    @GetMapping("/filterAll")
+    public  List<ClientFeatureDto> getFiltersByTrackerId(@RequestParam Long userId){
+        return clientService.filtersByUserId(userId);
+    }
+
 
 
 
