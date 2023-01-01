@@ -1,5 +1,6 @@
 package com.fitnessteam.fitnesstracker.controllers;
 
+import com.fitnessteam.fitnesstracker.dtos.TrainingProgramDto;
 import com.fitnessteam.fitnesstracker.entities.TrainingProgram;
 import com.fitnessteam.fitnesstracker.services.TrainingProgramService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,10 @@ public class TrainingProgramController {
     @DeleteMapping
     public void delete(@RequestParam Long id){
         trainingProgramService.deleteTrainingProgram(id);
+    }
+
+    @GetMapping("/getAllByUserId")
+    public List<TrainingProgramDto> getFilterAll(@RequestParam Long userId){
+        return trainingProgramService.filterByUserId(userId);
     }
 }

@@ -88,4 +88,9 @@ public class ClientServiceImpl implements ClientService {
         return clientRepository.filterByTrackerId(trackerFilterDto.getTrackerId());
     }
 
+    @Override
+    public ClientFilterDto filterByUserId(Long userId) {
+        return clientRepository.filterByUserId(userId);
+    }
+
 }

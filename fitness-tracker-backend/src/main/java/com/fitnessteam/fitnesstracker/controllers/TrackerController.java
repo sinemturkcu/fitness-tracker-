@@ -1,9 +1,9 @@
 package com.fitnessteam.fitnesstracker.controllers;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fitnessteam.fitnesstracker.dtos.*;
 import com.fitnessteam.fitnesstracker.entities.Tracker;
 import com.fitnessteam.fitnesstracker.services.TrackerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,6 +33,11 @@ public class TrackerController {
     @GetMapping("/availableTrackers")
     public List<TrackerActiveDto> getAvailableTrackers(){
         return  this.trackerService.findAllActiveTracker();
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/{userId}")
+    public Tracker updateActivity(@Validated @PathVariable Long userId){
+        return trackerService.changeActivity(userId);
     }
 
 
