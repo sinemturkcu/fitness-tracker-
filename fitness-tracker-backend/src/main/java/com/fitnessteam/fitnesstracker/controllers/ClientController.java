@@ -52,6 +52,11 @@ public class ClientController {
         return clientService.filtersByUserId(userId);
     }
 
+    @PutMapping("/update/{id}")
+    public Client updateClient(@RequestBody Client client,@PathVariable Long id){
+        return clientService.updateClient(client, id);
+    }
+
 
 
 

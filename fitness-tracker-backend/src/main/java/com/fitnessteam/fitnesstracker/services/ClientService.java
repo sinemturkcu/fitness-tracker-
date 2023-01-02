@@ -17,4 +17,5 @@ public interface ClientService {
     List<ClientFilterDto> filterByTrackerId(Long trackerId);
     ClientFilterDto filterByUserId(Long userId);
     List<ClientFeatureDto> filtersByUserId(Long userId);
+    Client updateClient(Client client, Long id);
 }
